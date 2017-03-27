@@ -1,0 +1,15 @@
+{
+  "name": "node-uberon-mappings",
+  "version": "1.0.0",
+  "description": "curl -L -O 'http://purl.obolibrary.org/obo/uberon/basic.obo'",
+  "main": "obo.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bionode-obo": "^0.1.1",
+    "unionfind": "0.0.3"
+  }
+}
