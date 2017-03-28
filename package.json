@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "bionode-obo": "^0.1.1",
+    "csv-parse": "^1.2.0",
     "unionfind": "0.0.3"
   }
 }
