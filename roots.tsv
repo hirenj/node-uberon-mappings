@@ -1,4 +1,5 @@
-UBERON:0002036	striated muscle tissue
+UBERON:0014892	skeletal muscle organ
+UBERON:0000045	ganglion
 UBERON:0001911	mammary gland
 UBERON:0001132	parathyroid gland
 UBERON:0002073	hair follicle
@@ -84,6 +85,7 @@ UBERON:0006860	swim bladder
 UBERON:0000002	uterine cervix
 UBERON:0000995	uterus
 UBERON:0000014	zone of skin
+UBERON:0001003	skin epidermis
 UBERON:0000947	aorta
 UBERON:0000948	heart
 UBERON:0002106	spleen
