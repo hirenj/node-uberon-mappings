@@ -3,11 +3,12 @@
 const obo = require('bionode-obo');
 const fs = require('fs');
 const csv = require('csv-parse');
+const path = require('path');
 
 const new_mapping = () => { return {'p' : [], 'c' : [] }};
 
 const read_mappings = new Promise( (resolve,reject) => {
-  let instream = fs.createReadStream('basic.obo');
+  let instream = fs.createReadStream(path.join(__dirname,'../basic.obo'));
   let mappings = {};
   instream.pipe(obo.parse(() => {})).on('data',function(buffer) {
     let dat = JSON.parse(buffer);
@@ -54,7 +55,20 @@ const read_roots = new Promise( (resolve,reject) => {
     }
     resolve(data.map( row => row[0] ));
   });
-  fs.createReadStream('roots.tsv').pipe(parser);
+  fs.createReadStream(path.join(__dirname,'../roots.tsv')).pipe(parser);
+});
+
+const read_brenda_mappings = new Promise( (resolve,reject) => {
+  let parser = csv({delimiter: "\t"}, function(err, data){
+    if (err) {
+      reject(err);
+      return;
+    }
+    let mappings = {};
+    data.forEach( row => mappings[row[4].toUpperCase()] = row[0] );
+    resolve(mappings);
+  });
+  fs.createReadStream(path.join(__dirname,'../hetio-slim.tsv')).pipe(parser);
 });
 
 const parents_for = function(start,dist,mappings) {
@@ -102,9 +116,19 @@ const find_parent_term = function(term,roots,mappings) {
     return { term: term, root: null };
 };
 
+const convert_brenda = function(term) {
+  return read_brenda_mappings.then( mappings => {
+    return mappings[term.toUpperCase()];
+  }).then( converted => {
+    return { term: converted, original: term, toString: () => converted }
+  });
+}
+
 const convert = function(term) {
   let term_promise = Promise.resolve(term);
-
+  if (term.toUpperCase().indexOf('BTO:') == 0) {
+    term_promise = convert_brenda(term);
+  }
   return term_promise
   .then( (term) => Promise.all([term,read_mappings,read_roots]) )
   .then( definitions => {
@@ -112,8 +136,8 @@ const convert = function(term) {
     let mappings = definitions[1];
     let roots = definitions[2];
 
-    if (roots.indexOf(term) >= 0) {
-      return { term: term, root: term, name: mappings[term].value.name };
+    if (roots.indexOf(term.toString()) >= 0) {
+      return { term: term, root: term.toString(), name: mappings[term.toString()].value.name };
     }
 
     return find_parent_term(term,roots,mappings);
