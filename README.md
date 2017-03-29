@@ -18,3 +18,9 @@ converter.convert('UBERON:0004648').then( mapped => console.log(mapped));
 // If we have a set of terms that don't have mappings, we can suggest root terms
 converter.suggest(['UBERON:0004648','UBERON:0001007']).then( suggestions => console.log(suggestions));
 ```
+
+
+## Brenda taxonomy
+```
+http://www.brenda-enzymes.info/ontology/tissue/tree/update/update_files/BrendaTissueOBO
+```
