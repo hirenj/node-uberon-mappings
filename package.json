@@ -1,7 +1,7 @@
 {
   "name": "node-uberon-mappings",
   "version": "1.0.0",
-  "description": "curl -L -O 'http://purl.obolibrary.org/obo/uberon/basic.obo'",
+  "description": "Map UBERON terms to a set of root terms",
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha"
