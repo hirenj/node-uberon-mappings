@@ -12,6 +12,7 @@ const BTO_IDS = [
 'BTO:0000007',
 'BTO:0000131',
 'BTO:0000132',
+'BTO:0000133',
 'BTO:0000142',
 'BTO:0000164',
 'BTO:0000232',
@@ -37,6 +38,7 @@ const BTO_IDS = [
 const correct_mappings = {
   "HEK-293 cell":"kidney",
   "blood plasma":"blood plasma",
+  "blood serum" : "serum",
   "blood platelet":"bone marrow",
   "brain":"brain",
   "Burkitt lymphoma cell":"lymphoid tissue",
