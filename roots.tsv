@@ -1,3 +1,4 @@
+UBERON:0013702	body proper
 UBERON:0014892	skeletal muscle organ
 UBERON:0000045	ganglion
 UBERON:0001911	mammary gland
@@ -12,6 +13,7 @@ UBERON:0000004	nose
 UBERON:0001042	chordate pharynx
 UBERON:0002369	adrenal gland
 UBERON:0006856	interrenal gland
+UBERON:0001969	blood plasma
 UBERON:0000178	blood
 UBERON:0002371	bone marrow
 UBERON:0002481	bone tissue
@@ -84,8 +86,7 @@ UBERON:0002110	gall bladder
 UBERON:0006860	swim bladder
 UBERON:0000002	uterine cervix
 UBERON:0000995	uterus
-UBERON:0000014	zone of skin
-UBERON:0001003	skin epidermis
+UBERON:0002097	skin of body
 UBERON:0000947	aorta
 UBERON:0000948	heart
 UBERON:0002106	spleen

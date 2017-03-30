@@ -81,7 +81,14 @@ const handle_entry_brenda = function(entry,self,results) {
 
 const read_mappings = read_obo(path.join(__dirname,'../basic.obo'),handle_entry_uberon);
 
-const read_obo_brenda = read_mappings.then( () => read_obo(path.join(__dirname,'../brenda.obo'),handle_entry_brenda));
+const read_obo_brenda = read_mappings.then( () => read_obo(path.join(__dirname,'../brenda.obo'),handle_entry_brenda)).then( obo => {
+
+  // Monkey patch brenda
+
+  obo['BTO:0000132'].p = obo['BTO:0000132'].p.filter( parent => parent !== 'BTO:0000131');
+
+  return obo;
+});
 
 const read_roots = new Promise( (resolve,reject) => {
   let parser = csv({delimiter: "\t"}, function(err, data){
@@ -102,6 +109,7 @@ const read_brenda_mappings = new Promise( (resolve,reject) => {
     }
     let mappings = {};
     data.forEach( row => mappings[row[1].toUpperCase()] = row[0] );
+    delete mappings['BTO:0000379'];
     resolve(mappings);
   });
   fs.createReadStream(path.join(__dirname,'../uberon_bto_mapping.tsv')).pipe(parser);
@@ -147,6 +155,7 @@ const find_parent_term = function(term,roots,mappings) {
       }
     });
     if (found_root) {
+      alternative_roots = alternative_roots.filter( alt => alt.term !== 'UBERON:0013702');
       return { term: term, root: found_root, name: mappings[found_root].value.name, distance: min_distance, alternatives: alternative_roots };
     }
     return { term: term, root: null };
@@ -208,6 +217,22 @@ const root_suggestion = function(terms) {
   });
 };
 
+const get_name = function(term) {
+  let mapping_source = null;
+  if (term.indexOf('BTO:') == 0) {
+    mapping_source = read_obo_brenda;
+  }
+  if (term.indexOf('UBERON:') == 0) {
+    mapping_source = read_mappings;
+  }
+  if ( ! mapping_source ) {
+    return Promise.resolve(term);
+  }
+  return mapping_source.then(mappings => {
+    return mappings[term].value.name;
+  });
+};
 
+exports.getname = get_name;
 exports.convert = convert;
 exports.suggest = root_suggestion;
