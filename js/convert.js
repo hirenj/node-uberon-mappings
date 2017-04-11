@@ -50,6 +50,16 @@ const handle_entry_uberon = function(entry,self,results) {
     results[relation]['c'].push(entry.id);
     results[entry.id]['p'].push(relation);
   });
+  if (entry.id === 'UBERON:0001474') {
+    if (! results[entry.id] ) {
+      results[entry.id] = new_mapping();
+    }
+    if (! results['UBERON:0002481'] ) {
+      results['UBERON:0002481'] = new_mapping();
+    }
+    results[entry.id]['p'].push('UBERON:0002481');
+    results['UBERON:0002481']['c'].push(entry.id);
+  }
 };
 
 const handle_entry_brenda = function(entry,self,results) {
@@ -115,7 +125,7 @@ const read_brenda_mappings = new Promise( (resolve,reject) => {
   fs.createReadStream(path.join(__dirname,'../uberon_bto_mapping.tsv')).pipe(parser);
 });
 
-const parents_for = function(start,dist,mappings) {
+const parents_for = function(start,dist,mappings,roots) {
   if ( ! dist ) {
     dist = 0;
   }
@@ -125,16 +135,19 @@ const parents_for = function(start,dist,mappings) {
   }
 
   let results = [];
+  if ((roots || []).indexOf(start) >= 0) {
+    return results;
+  }
   mappings[start].p.forEach( parent => {
     results.push({ val: parent, dist: dist });
-    results = results.concat(parents_for(parent,dist + 1,mappings));
+    results = results.concat(parents_for(parent,dist + 1,mappings,roots));
   });
   return results;
 };
 
 
 const find_parent_term = function(term,roots,mappings) {
-    let parents_objs = parents_for(term.toString(),null,mappings);
+    let parents_objs = parents_for(term.toString(),null,mappings,roots);
     let parents = parents_objs.map( obj => obj.val );
     let found_root = null;
     let min_distance = 1e06;
