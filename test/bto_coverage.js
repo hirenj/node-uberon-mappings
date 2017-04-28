@@ -32,6 +32,7 @@ const BTO_IDS = [
 'BTO:0001619',
 'BTO:0001949',
 'BTO:0001976',
+'BTO:0000237',
 'BTO:0003034'
 ];
 
@@ -59,7 +60,8 @@ const correct_mappings = {
   "skin fibroblast cell line":"skin of body",
   "HUVEC cell":"blood vessel",
   "Neuro-2a cell":"ganglion",
-  "HELF cell":"lung"
+  "HELF cell":"lung",
+  "cerebrospinal fluid":"cerebrospinal fluid"
 };
 
 const allowed_missing = [];

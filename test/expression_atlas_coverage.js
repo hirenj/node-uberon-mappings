@@ -72,7 +72,7 @@ const get_terms = function(experiment) {
   .then( read_tsv );
 }
 
-const experiment_ids = ['E-MTAB-2836','E-MTAB-2919','E-MTAB-4344','E-GEOD-26284','E-PROT-1','E-PROT-3'];
+const experiment_ids = ['E-MTAB-2836','E-MTAB-4344','E-GEOD-26284','E-PROT-1','E-PROT-3'];
 
 const allowed_missing = ['UBERON:0001007'];
 const allowed_replaced = ['UBERON:0004648'];
