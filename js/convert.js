@@ -4,12 +4,13 @@ const obo = require('bionode-obo');
 const fs = require('fs');
 const csv = require('csv-parse');
 const path = require('path');
+const zlib = require('zlib');
 
 const new_mapping = () => { return {'p' : [], 'c' : [] }};
 
 const read_obo = function(file,handler) {
   return new Promise( (resolve,reject) => {
-    let instream = fs.createReadStream(file);
+    let instream = fs.createReadStream(file).pipe(zlib.createGunzip());
     let mappings = {};
     instream.pipe(obo.parse(() => {})).on('data',function(buffer) {
       let dat = JSON.parse(buffer);
@@ -89,9 +90,9 @@ const handle_entry_brenda = function(entry,self,results) {
   });
 };
 
-const read_mappings = read_obo(path.join(__dirname,'../basic.obo'),handle_entry_uberon);
+const read_mappings = read_obo(path.join(__dirname,'../basic.obo.gz'),handle_entry_uberon);
 
-const read_obo_brenda = read_mappings.then( () => read_obo(path.join(__dirname,'../brenda.obo'),handle_entry_brenda)).then( obo => {
+const read_obo_brenda = read_mappings.then( () => read_obo(path.join(__dirname,'../brenda.obo.gz'),handle_entry_brenda)).then( obo => {
 
   // Monkey patch brenda
 
