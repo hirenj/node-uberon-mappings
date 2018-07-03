@@ -10,6 +10,7 @@ const new_mapping = () => { return {'p' : [], 'c' : [] }};
 
 const read_obo = function(file,handler) {
   return new Promise( (resolve,reject) => {
+    console.error("Reading OBO mappings from file ",file);
     let instream = fs.createReadStream(file).pipe(zlib.createGunzip());
     let mappings = {};
     instream.pipe(obo.parse(() => {})).on('data',function(buffer) {
@@ -21,6 +22,7 @@ const read_obo = function(file,handler) {
       handler(dat,mappings[dat.id],mappings);
     });
     instream.on('end', () => {
+      console.error("Finished reading OBO mappings from file ",file);
       resolve(mappings);
     });
     instream.on('error', err => reject(err) );

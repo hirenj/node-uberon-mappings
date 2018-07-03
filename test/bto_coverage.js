@@ -33,6 +33,7 @@ const BTO_IDS = [
 'BTO:0001949',
 'BTO:0001976',
 'BTO:0000237',
+'BTO:0000782',
 'BTO:0003034'
 ];
 
@@ -61,6 +62,7 @@ const correct_mappings = {
   "HUVEC cell":"blood vessel",
   "Neuro-2a cell":"ganglion",
   "HELF cell":"lung",
+  "T-lymphocyte":"lymphoid tissue",
   "cerebrospinal fluid":"cerebrospinal fluid"
 };
 
@@ -73,6 +75,7 @@ describe('BTO cell line and tissue coverage', function() {
       let term_name = null;
       converter.getName(id)
       .then( name => { term_name = name })
+      .then( () => { expect(Object.keys(correct_mappings)).to.include(term_name) })
       .then( () => converter.convert(id) )
       .then( term => [ term ] )
       .then( terms => { if (terms[0].name) { expect(terms[0].name).equals(correct_mappings[term_name]); } return terms; })
