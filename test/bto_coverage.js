@@ -34,7 +34,8 @@ const BTO_IDS = [
 'BTO:0001976',
 'BTO:0000237',
 'BTO:0000782',
-'BTO:0003034'
+'BTO:0003034',
+'BTO:0001419'
 ];
 
 const correct_mappings = {
@@ -63,7 +64,8 @@ const correct_mappings = {
   "Neuro-2a cell":"ganglion",
   "HELF cell":"lung",
   "T-lymphocyte":"lymphoid tissue",
-  "cerebrospinal fluid":"cerebrospinal fluid"
+  "cerebrospinal fluid":"cerebrospinal fluid",
+  "urine":"urine"
 };
 
 const allowed_missing = [];
@@ -78,7 +80,7 @@ describe('BTO cell line and tissue coverage', function() {
       .then( () => { expect(Object.keys(correct_mappings)).to.include(term_name) })
       .then( () => converter.convert(id) )
       .then( term => [ term ] )
-      .then( terms => { if (terms[0].name) { expect(terms[0].name).equals(correct_mappings[term_name]); } return terms; })
+      .then( terms => { if (terms[0].name) {  expect(terms[0].name).equals(correct_mappings[term_name]); } return terms; })
       .then( converted_terms => converted_terms.filter( term => (! term.root) || ((term.alternatives || []).length > 0) ))
       .then( imprecise => imprecise.filter( item => (allowed_missing.indexOf(item.term.toString()) < 0) && (allowed_replaced.indexOf(item.term.toString()) < 0) ) )
       .then( imprecise => { if (imprecise.length > 0) { console.dir(imprecise[0]); } return imprecise;})
