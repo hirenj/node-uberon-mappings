@@ -4,7 +4,7 @@
   "description": "Map UBERON terms to a set of root terms",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha --timeout 15000"
+    "test": "./node_modules/mocha/bin/mocha --timeout 20000"
   },
   "author": "",
   "license": "ISC",
