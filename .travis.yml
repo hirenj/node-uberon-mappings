@@ -1,7 +1,9 @@
 language: node_js
 node_js:
-- '4'
+- '8'
 install:
   - npm install
+env:
+  - SKIP_FTP=1
 script:
   - npm test

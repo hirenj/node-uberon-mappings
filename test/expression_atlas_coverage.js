@@ -79,6 +79,12 @@ const allowed_replaced = ['UBERON:0004648'];
 
 
 describe('Gene expression atlas coverage', function() {
+  if (process.env['SKIP_FTP']) {
+    it( `Skipping FTP tests`, function(done) {
+      done();
+    });
+    return;
+  }
   experiment_ids.forEach( exp => {
     it( `Has full coverage for ${exp}`, function(done) {
       get_terms(exp)
