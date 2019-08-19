@@ -35,7 +35,8 @@ const BTO_IDS = [
 'BTO:0000237',
 'BTO:0000782',
 'BTO:0003034',
-'BTO:0001419'
+'BTO:0001419',
+'BTO:0001336'
 ];
 
 const correct_mappings = {
@@ -65,6 +66,7 @@ const correct_mappings = {
   "HELF cell":"lung",
   "T-lymphocyte":"lymphoid tissue",
   "cerebrospinal fluid":"cerebrospinal fluid",
+  "synovial fibroblast" : "layer of synovial tissue",
   "urine":"urine"
 };
 
