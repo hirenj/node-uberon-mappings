@@ -65,6 +65,34 @@ const handle_entry_uberon = function(entry,self,results) {
   }
 };
 
+const handle_entry_cl = function(entry,self,results) {
+  if (entry.intersection_of) {
+    entry.relationship = (entry.relationship || []).concat(entry.intersection_of);
+  }
+  [].concat(entry.is_a)
+  .filter( is_a => is_a )
+  .map( is_a => is_a.split(' ')[0] )
+  .filter( is_a => is_a.indexOf('CL:') == 0 )
+  .forEach( is_a => {
+    if (! results[is_a] ) {
+      results[is_a] = new_mapping();
+    }
+    results[is_a]['c'].push(entry.id);
+    results[entry.id]['p'].push(is_a);
+  });
+  [].concat(entry.relationship)
+  .filter( relationship => (relationship ||'').indexOf('part_of') >= 0 )
+  .map( relation => relation.split(' ')[1] )
+  .filter( is_a => is_a.indexOf('CL:') == 0 )
+  .forEach( relation => {
+    if (! results[relation] ) {
+      results[relation] = new_mapping();
+    }
+    results[relation]['c'].push(entry.id);
+    results[entry.id]['p'].push(relation);
+  });
+};
+
 const handle_entry_brenda = function(entry,self,results) {
   if (entry.intersection_of) {
     entry.relationship = (entry.relationship || []).concat(entry.intersection_of);
@@ -93,6 +121,8 @@ const handle_entry_brenda = function(entry,self,results) {
 };
 
 const read_mappings = read_obo(path.join(__dirname,'../basic.obo.gz'),handle_entry_uberon);
+
+const read_mappings_cl = read_obo(path.join(__dirname,'../cl.obo.gz'),handle_entry_cl);
 
 const read_obo_brenda = read_mappings.then( () => read_obo(path.join(__dirname,'../brenda.obo.gz'),handle_entry_brenda)).then( obo => {
 
@@ -198,8 +228,20 @@ const convert = function(term) {
   if (term.toUpperCase().indexOf('BTO:') == 0) {
     term_promise = convert_brenda(term.toUpperCase());
   }
+
+  let mapping_source = null;
+  if (term.indexOf('BTO:') == 0) {
+    mapping_source = read_obo_brenda;
+  }
+  if (term.indexOf('UBERON:') == 0) {
+    mapping_source = read_mappings;
+  }
+  if (term.indexOf('CL:') == 0) {
+    mapping_source = read_mappings_cl;
+  }
+
   return term_promise
-  .then( (term) => Promise.all([term,read_mappings,read_roots]) )
+  .then( (term) => Promise.all([term,mapping_source,read_roots]) )
   .then( definitions => {
     let term = definitions[0];
     let mappings = definitions[1];
@@ -218,7 +260,18 @@ const root_suggestion = function(terms) {
   if ( ! Array.isArray(terms)) {
     terms = new Array(terms);
   }
-  return read_mappings.then( mappings => {
+  let mapping_source = null;
+  if (terms[0].indexOf('BTO:') == 0) {
+    mapping_source = read_obo_brenda;
+  }
+  if (terms[0].indexOf('UBERON:') == 0) {
+    mapping_source = read_mappings;
+  }
+  if (terms[0].indexOf('CL:') == 0) {
+    mapping_source = read_mappings_cl;
+  }
+
+  return mapping_source.then( mappings => {
     let parent_count = {};
     terms.forEach( term => {
       let parents_objs = parents_for(term.toString(),null,mappings);
@@ -240,6 +293,9 @@ const get_name = function(term) {
   }
   if (term.indexOf('UBERON:') == 0) {
     mapping_source = read_mappings;
+  }
+  if (term.indexOf('CL:') == 0) {
+    mapping_source = read_mappings_cl;
   }
   if ( ! mapping_source ) {
     return Promise.resolve(term);

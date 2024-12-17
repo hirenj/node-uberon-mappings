@@ -9,7 +9,6 @@ UBERON:0000045	ganglion
 UBERON:0001911	mammary gland
 UBERON:0001132	parathyroid gland
 UBERON:0002073	hair follicle
-UBERON:0002073	hair follicle
 UBERON:0003729	mouth mucosa
 UBERON:0001301	epididymis
 UBERON:0002185	bronchus
@@ -112,4 +111,217 @@ UBERON:0002114	duodenum
 UBERON:0001987	placenta
 UBERON:0001044	saliva-secreting gland
 UBERON:0002108	small intestine
+UBERON:0000059	large intestine
 UBERON:0001135	smooth muscle tissue
+UBERON:0000344	mucosa
+UBERON:0003126	trachea
+UBERON:0001046	hindgut
+UBERON:0002370	thymus
+UBERON:0001049	neural tube
+UBERON:0000043	tendon
+CL:0000839	lymphoid lineage restricted progenitor cell
+CL:0000837	hematopoietic multipotent progenitor cell
+CL:0002032	hematopoietic oligopotent progenitor cell
+CL:0000838	myeloid lineage restricted progenitor cell
+CL:0000037	hematopoietic stem cell
+CL:0000764	erythroid lineage cell
+CL:0000526	afferent neuron
+CL:0010022	cardiac neuron
+CL:4033050	catecholaminergic neuron
+CL:2000029	central nervous system neuron
+CL:0000108	cholinergic neuron
+CL:0000117	CNS neuron (sensu Vertebrata)
+CL:0000527	efferent neuron
+CL:0000617	GABAergic neuron
+CL:0000679	glutamatergic neuron
+CL:0000099	interneuron
+CL:4023035	lateral ganglionic eminence derived neuron
+CL:2000031	lateral line ganglion neuron
+CL:4023079	midbrain-derived inhibitory neuron
+CL:0000104	multipolar neuron
+CL:0000029	neural crest derived neuron
+CL:1001503	olfactory bulb tufted cell
+CL:2000032	peripheral nervous system neuron
+CL:0000850	serotonergic neuron
+CL:4023168	somatosensory neuron
+CL:0011113	spiral ganglion neuron
+CL:0008028	visual system neuron
+CL:0000055	non-terminally differentiated cell
+CL:0000058	chondroblast
+CL:0000030	glioblast
+CL:0005001	iridoblast
+CL:0000541	melanoblast
+CL:0000680	muscle precursor cell
+CL:0000031	neuroblast (sensu Vertebrata)
+CL:0000060	odontoblast
+CL:0000062	osteoblast
+CL:0005004	pigment erythroblast
+CL:0007000	preameloblast
+CL:0007002	precementoblast
+CL:0007009	prechondroblast
+CL:0007003	preodontoblast
+CL:0007010	preosteoblast
+CL:0005002	xanthoblast
+CL:0001061	abnormal cell
+CL:0000232	erythrocyte
+CL:0000094	granulocyte
+CL:0002318	peripheral blood mesothelial cell
+CL:0000233	platelet
+CL:1001610	bone marrow hematopoietic cell
+CL:0000842	mononuclear cell
+CL:0000766	myeloid leukocyte
+CL:0002087	nongranular leukocyte
+CL:0000451	dendritic cell
+CL:0000235	macrophage
+CL:0000785	mature B cell
+CL:0000041	mature eosinophil
+CL:2000074	splenocyte
+CL:0000763	myeloid cell
+CL:0000066	epithelial cell
+CL:4033023	airway submucosal gland collecting duct epithelial cell
+CL:0000418	arcade cell
+CL:0000067	ciliated epithelial cell
+CL:0000075	columnar/cuboidal epithelial cell
+CL:1000432	conjunctival epithelial cell
+CL:0010015	coronet cell
+CL:0000658	cuticle secreting cell
+CL:0000068	duct epithelial cell
+CL:0002077	ecto-epithelial cell
+CL:0002076	endo-epithelial cell
+CL:0002536	epithelial cell of amnion
+CL:1000434	epithelial cell of external acoustic meatus
+CL:1000415	epithelial cell of gallbladder
+CL:1000433	epithelial cell of lacrimal canaliculus
+CL:0010002	epithelial cell of umbilical artery
+CL:1000296	epithelial cell of urethra
+CL:1000441	epithelial cell of viscerocranial mucosa
+CL:0000500	follicular epithelial cell
+CL:0000150	glandular epithelial cell
+CL:0000160	goblet cell
+CL:0000182	hepatocyte
+CL:4030024	hillock cell
+CL:0005006	ionocyte
+CL:0002565	iris pigment epithelial cell
+CL:0002518	kidney epithelial cell
+CL:0000730	leading edge cell
+CL:0002327	mammary gland epithelial cell
+CL:0002078	meso-epithelial cell
+CL:0008026	open tracheal system tracheocyte
+CL:2000064	ovarian surface epithelial cell
+CL:4033014	peg cell
+CL:0002577	placental epithelial cell
+CL:0002586	retinal pigment epithelial cell
+CL:0000098	sensory epithelial cell
+CL:0000076	squamous epithelial cell
+CL:0000079	stratified epithelial cell
+CL:0000420	syncytial epithelial cell
+CL:0000244	transitional epithelial cell
+CL:0002222	vertebrate lens cell
+CL:0000846	vestibular dark cell
+CL:0000239	brush border epithelial cell
+CL:0000164	enteroendocrine cell
+CL:0000313	serous secreting cell
+CL:0000319	mucus secreting cell
+CL:4033054	perivascular cell
+CL:0011020	neural progenitor cell
+CL:0000034	stem cell
+CL:4030035	dental pulp stem cell
+CL:0002322	embryonic stem cell
+CL:0000014	germ line stem cell
+CL:0009091	Leydig stem cell
+CL:0000048	multi fate stem cell
+CL:0000723	somatic stem cell
+CL:0002287	type IV taste receptor cell
+CL:0000442	follicular dendritic cell
+CL:0000187	muscle cell
+CL:0000185	myoepithelial cell
+CL:0000186	myofibroblast cell
+CL:0000669	pericyte
+CL:0000095	neuron associated cell
+CL:0002320	connective tissue cell
+CL:0000136	adipocyte
+CL:0002462	adipose dendritic cell
+CL:2000072	adipose microvascular endothelial cell
+CL:0002503	adventitial cell
+CL:0002602	annulus pulposus cell
+CL:0000058	chondroblast
+CL:0000484	connective tissue type mast cell
+CL:0002148	dental pulp cell
+CL:0000057	fibroblast
+CL:0000427	GLR cell
+CL:4033043	lung interstitial macrophage
+CL:4033018	lung megakaryocyte
+CL:0000134	mesenchymal stem cell
+CL:0000186	myofibroblast cell
+CL:0002564	nucleus pulposus cell of intervertebral disc
+CL:0000140	odontocyte
+CL:0000062	osteoblast
+CL:0000137	osteocyte
+CL:0000669	pericyte
+CL:0002576	perineurial cell
+CL:0007010	preosteoblast
+CL:0000499	stromal cell
+CL:0017004	telocyte
+CL:0000115	endothelial cell
+CL:0000147	pigment cell
+CL:0000747	cyanophore
+CL:4040006	dermal chromatophore
+CL:0000574	erythrophore
+CL:0000431	iridophore
+CL:0000571	leucophore
+CL:0000148	melanocyte
+CL:0000341	pigment cell (sensu Nematoda and Protostomia)
+CL:0000342	pigment cell (sensu Vertebrata)
+CL:0000149	visual pigment cell
+CL:0000430	xanthophore cell
+CL:0000151	secretory cell
+CL:0007021	alarm substance cell
+CL:0000435	alkali secreting cell
+CL:0000059	ameloblast
+CL:4042019	beta1-tanycyte
+CL:0000457	biogenic amine secreting cell
+CL:0000054	bone matrix secreting cell
+CL:0000447	carbohydrate secreting cell
+CL:4033050	catecholaminergic neuron
+CL:0000061	cementoblast
+CL:0000686	cerebrospinal fluid secreting cell
+CL:0000108	cholinergic neuron
+CL:0011029	cnidocyte
+CL:0000163	endocrine cell
+CL:0000424	excretory cell
+CL:0000152	exocrine cell
+CL:0000617	GABAergic neuron
+CL:0000150	glandular epithelial cell
+CL:0000679	glutamatergic neuron
+CL:1001509	glycinergic neuron
+CL:0000249	hatching gland cell
+CL:0011109	hypocretin-secreting neuron
+CL:0000482	juvenile hormone secreting cell
+CL:1000272	lung secretory cell
+CL:0000438	luteinizing hormone secreting cell
+CL:1000155	Malpighian tubule stellate cell
+CL:0000314	milk secreting cell
+CL:0000851	neuromast mantle cell
+CL:0000487	oenocyte
+CL:0000167	peptide hormone secreting cell
+CL:0000154	protein secreting cell
+CL:0000319	mucus secreting cell
+CL:0000313	serous secreting cell
+CL:0000174	steroid hormone secreting cell
+CL:0000157	surfactant secreting cell
+CL:0000177	testosterone secreting cell
+CL:0000436	vaginal lubricant secreting cell
+CL:4030032	valve interstitial cell
+CL:0009010	transit amplifying cell
+CL:0000349	extraembryonic cell
+CL:0002323	amniocyte
+CL:0000350	amnioserosal cell
+CL:2000002	decidual cell
+CL:0008033	decidual pericyte
+CL:0002569	mesenchymal stem cell of umbilical cord
+CL:2000085	mononuclear cell of umbilical cord
+CL:0002577	placental epithelial cell
+CL:1000274	trophectodermal cell
+CL:0000351	trophoblast cell
+CL:2000052	umbilical artery endothelial cell
+CL:0000428	yolk cell
